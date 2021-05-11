@@ -46,6 +46,7 @@ class AccountViewSet(viewsets.ViewSet):
     @action(methods=['POST'], detail=False)
     def login(self, request):
         serializer = LoginSerializer(data = request.data)
+        # check if username or password is blank
         if not serializer.is_valid():
             return Response({
                 "success": False,
@@ -93,4 +94,4 @@ class AccountViewSet(viewsets.ViewSet):
         return Response({
             'success': True,
             'user': UserSerializer(user).data
-        }, status=201)
+        }, status=200)
