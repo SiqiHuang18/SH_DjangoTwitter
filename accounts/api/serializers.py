@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User, Group
 from rest_framework import serializers
-
+from django.core import exceptions
 # convert object to json 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
