@@ -21,7 +21,7 @@ class FriendshipViewSet(viewsets.GenericViewSet):
     # post method 会去找一个serializer_class 填充表单
     serializer_class = FriendshipSerializerForCreate 
     queryset = User.objects.all()
-
+    
     @action(methods=['GET'], detail=True, permission_classes=[AllowAny])
     def followers(self, request, pk):
         # GET /api/friendships/pk/followers/
