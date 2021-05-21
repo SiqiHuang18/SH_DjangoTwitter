@@ -40,7 +40,7 @@ class TweetViewSet(viewsets.GenericViewSet):
         return Response(TweetSerializer(tweet).data, status=201)
 
     def list(self, request, *args, **kwargs):
-
+        # 重载 list,  不列出所有 tweets, 要求指定 user_id 作为筛选条件
         if 'user_id' not in request.query_params:
             return Response('missing user_id', status=400)
 
