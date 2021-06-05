@@ -46,11 +46,9 @@ class CommentSerializerForUpdate(serializers.ModelSerializer):
 
     class Meta:
         model = Comment
-        fields = ('content')
+        fields = ('content',)
     
     def update(self, instance, validated_data):
         instance.content = validated_data['content']
         instance.save()
         return instance 
-    
-    
