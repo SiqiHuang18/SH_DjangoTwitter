@@ -28,3 +28,5 @@ class TweetTests(TestCase):
         dongxie = self.create_user('dongxie')
         self.create_like(dongxie, self.tweet)
         self.assertEqual(self.tweet.like_set.count(), 2)
+
+    
