@@ -9,7 +9,7 @@ from rest_framework.decorators import action
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from utils.decorators import required_params
-
+from inbox.services import NotificationService
 
 class LikeViewSet(viewsets.GenericViewSet):
     queryset = Like.objects.all()
@@ -28,6 +28,7 @@ class LikeViewSet(viewsets.GenericViewSet):
                 'errors': serializer.errors,
             }, status=status.HTTP_400_BAD_REQUEST)
         instance = serializer.save()
+        NotificationService.send_like_notification(instance)
         return Response(
             LikeSerializer(instance).data,
             status=status.HTTP_201_CREATED,
